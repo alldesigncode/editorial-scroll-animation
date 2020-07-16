@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "editorial-scroll-animation"
+    }
+  },
+  "defaultProject": "editorial-scroll-animation",
+  "cli": {
+    "analytics": false
+  }
 }

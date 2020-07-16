@@ -1,1 +1,206 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-light: #fefdfe;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+body {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  box-sizing: inherit;
+  position: relative;
+  background-color: var(--color-light);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.main {
+  display: grid;
+  grid-template-columns:
+    minmax(50px, 1fr) [layout-start] repeat(12, minmax(min-content, 130px))
+    [layout-end] minmax(50px, 1fr);
+  grid-template-rows: 50px 300px repeat(2, 100vh);
+}
+
+.header,
+.center-info,
+.section-one,
+.section-two {
+  grid-column: layout-start / layout-end;
+}
+
+.header {
+  grid-row: 1 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 50px;
+  right: 50px;
+
+  .logo {
+    h4 {
+      font-size: 40px;
+    }
+  }
+
+  .nav {
+    .burger-icon {
+      width: 30px;
+      height: 2px;
+      background: #000;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #000;
+      }
+
+      &::before {
+        top: -6px;
+      }
+      &::after {
+        top: 6px;
+      }
+    }
+  }
+}
+
+.center-info {
+  grid-row: 2 / 3;
+  align-self: center;
+  &__box {
+    display: flex;
+    &--left {
+      text-transform: uppercase;
+      font-size: 15px;
+      span {
+        border-bottom: 1px solid #000;
+      }
+    }
+    &--right {
+      margin-left: 40%;
+    }
+  }
+}
+
+.section-one {
+  grid-row: 3 / 4;
+  display: grid;
+  grid-template: repeat(2, 330px) / repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.section-two {
+  grid-row: 4 / -1;
+  display: grid;
+  grid-template-columns: 50% repeat(2, 25%);
+  grid-template-rows: 150px repeat(4, min-content);
+  gap: 15px;
+
+  & > * {
+    grid-column: 2 / -1;
+  }
+
+  .letter {
+    position: relative;
+    span:nth-child(1) {
+      position: relative;
+      font-size: 80px;
+      color: #ea3e3e;
+    }
+    span:nth-child(2) {
+      position: absolute;
+      top: 22px;
+      left: 33px;
+    }
+  }
+
+  .titles {
+    .title-1 {
+      display: flex;
+      position: relative;
+      .num {
+        position: absolute;
+        top: 15px;
+        left: -25px;
+      }
+      h1 {
+        font-size: 65px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .paragraph {
+    font-family: "Helvetica";
+    line-height: 1.4;
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  .image-1 {
+    grid-column: 2 / 3;
+  }
+  .image-2 {
+    grid-column: 3 / -1;
+  }
+}
+
+.image-container {
+  position: relative;
+  img {
+    filter: brightness(0.75);
+  }
+  figcaption {
+    font-size: 70px;
+  }
+}
+.image-container:nth-child(5) {
+  grid-row: 2 / 3;
+  grid-column: 3 / 4;
+}
+.image-container:nth-child(4) {
+  & > :first-child {
+    position: absolute;
+    top: -26%;
+  }
+}
+
+.image-container:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  font-size: 70px;
+  height: 100%;
+  align-items: center;
+  font-weight: 500;
+  figcaption {
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    bottom: 0;
+  }
+}
